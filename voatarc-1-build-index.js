@@ -6,7 +6,7 @@ var Client_js_Filename = 'dom-code.js';
 
 var casper_options = {
 	userAgent: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)',
-	verbose: true,
+	// verbose: true,
 	logLevel: 'debug',
 	pageSettings:
 	{
@@ -186,7 +186,7 @@ var submission_index_page_urls = [];
 for(var page_number = 0; page_number < 20; page_number++)
 {
 	submission_index_page_urls.push('https://voat.co/v/' + subverse_name + '?page=' + page_number);
-	break; // Process only the first page for testing and debugging.
+	// break; // Process only the first page for testing and debugging.
 }
 
 
