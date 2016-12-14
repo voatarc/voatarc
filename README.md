@@ -137,6 +137,15 @@ from each project's website.
 	npm install phantomjs --global
 	npm install casperjs --global
 
+## Applications
+
+- An archived subverse can be used as a backup in case something happens to voat or the subverse.
+- Analysis can be performed to identify unusual posting behavior. High frequency
+of posting by a user (forum sliding) or a high frequency of vo(a)tes within a short period of time (brigading).
+- Research tools can be developed to perform advanced searches within the data.
+- Viewer applications can be developed to view the archived data in meaningful ways.
+- Migration utilities can be developed to convert the json archive data to other data formats (e.g. XML, database, etc.)
+
 ## Other Notes
 
 - The submission index file (created by the first script) is limited to
@@ -150,6 +159,6 @@ Effort was made to ensure that the submission page was fully loaded by
 continuously clicking the `Load More Replies` link as long as it was available.
 There can still be hidden replies that lie behind links like `1 Reply` or `3 Replies`.
 
-- ASCII Art found in source code is generated with 'Calvin S' font at
+- ASCII Art found in source code headers was generated with 'Calvin S' font at
   [patorjk.com](http://patorjk.com/software/taag/#p=display&c=c%2B%2B&f=Calvin%20S&t=)
 
