@@ -67,6 +67,26 @@ else
 }
 
 
+var max_pages = 20;
+if(casper.cli.has('max_pages'))
+{
+	var number = casper.cli.get('max_pages');
+	if(!isNaN(parseFloat(number)) && isFinite(number))
+	{
+		max_pages = number;
+		if(max_pages < 1)
+		{
+			max_pages = 1;
+		}
+		else if(max_pages > 20)
+		{
+			max_pages = 20;
+		}
+	}
+	logger.LogMessage('Using max index pages [' + max_pages + '].');
+}
+
+
 //=====================================================================
 // Start with front page of the subverse.
 var start_url = 'https://voat.co/v/' + subverse_name;
@@ -96,13 +116,11 @@ if(!fs.exists(output_folder))
 
 
 //=====================================================================
-// Load the first 20 pages of a subverse.
-// NOTE: Make CLI options for page number and max pages.
+// Load the index pages of a subverse.
 var submission_index_page_urls = [];
-for(var page_number = 0; page_number < 20; page_number++)
+for(var page_number = 0; page_number < max_pages; page_number++)
 {
 	submission_index_page_urls.push('https://voat.co/v/' + subverse_name + '?page=' + page_number);
-	break; // Process only the first page for testing and debugging.
 }
 
 
@@ -174,6 +192,7 @@ casper.then(
 		var content = JSON.stringify(submission_index_entries, undefined, 4);
 		var filename = output_folder + '/submission-index.json';
 		logger.LogMessage('Writing submission index file [' + filename + '].');
+		logger.LogMessage(submission_index_entries.length + ' submissions were indexed in ' + max_pages + ' pages.');
 		fs.write(filename, content, 'w');
 
 	}

@@ -66,6 +66,9 @@ else
 }
 
 
+var take_snapshots = casper.cli.has('snapshots');
+
+
 //=====================================================================
 // Start with front page of the subverse.
 var start_url = 'https://voat.co/v/' + subverse_name;
@@ -136,6 +139,7 @@ casper.eachThen(
 	function ScrapeSubmissionPage(iteration)
 	{
 		var submission_index_entry = iteration.data;
+		logger.LogMessage('==========================================');
 		logger.LogMessage('Processing next submission.');
 		logger.LogMessage(JSON.stringify(submission_index_entry, undefined, '    '));
 
@@ -157,7 +161,12 @@ casper.eachThen(
 					}
 
 					logger.LogMessage('Scraping submission ' + submission_id + ' in subverse [' + subverse_name + '].');
-					this.capture(output_folder + '/' + submission_id + '.jpg');
+					if(take_snapshots)
+					{
+						var snapshot_filename = output_folder + '/' + submission_id + '.jpg';
+						this.capture(snapshot_filename);
+						logger.LogMessage('Saved snapshot to [' + snapshot_filename + '].');
+					}
 
 					// Scrape the submission.
 					var submission = {};
@@ -170,9 +179,11 @@ casper.eachThen(
 					submission.vote_score = casper.GetElementText('div.submission div.score.unvoted');
 					submission.comment_count = casper.GetElementText('div.submission a.comments');
 					submission.comment_count = parsing.Parse_GetTextBefore(submission.comment_count, ' comment');
-					submission.comments = [];
+
+					logger.LogMessage(JSON.stringify(submission, undefined, '    '));
 
 					// Get the comments.
+					submission.comments = [];
 					var comment_ids = casper.getElementsAttribute('div.child.comment div.noncollapsed', 'id');
 					comment_ids.forEach(function(comment_id)
 					{
@@ -210,6 +221,7 @@ casper.eachThen(
 						}
 						submission.comments.push(comment);
 					});
+					logger.LogMessage('Scraped ' + submission.comments.length + ' comments.');
 
 					// Write the submission to a file.
 					var content = JSON.stringify(submission, undefined, 4);

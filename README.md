@@ -24,7 +24,12 @@ and stores that in a file: `submission-index.json`
 
 #### Usage
 
-	casperjs voatarc-1-build-index.js --subverse=subverse_name
+	casperjs voatarc-1-build-index.js --subverse=subverse_name --max_pages=n
+	
+Usage Options:
+
+- subverse : The name of the voat subverse to scrape (e.g. "news", "politics", etc.)
+- max_pages : The maximum number of subverse index pages to scrape. The default and maximum is 20 pages.
 
 #### Sample Output
 
@@ -63,8 +68,13 @@ There will be one file per submission in the subverse.
 
 #### Usage
 
-	casperjs voatarc-2-scrape-submissions.js --subverse=subverse_name
+	casperjs voatarc-2-scrape-submissions.js --subverse=subverse_name --snapshots
 
+Usage Options:
+
+- subverse : The name of the voat subverse to scrape (e.g. "news", "politics", etc.)
+- snapshots : If this option is present, a snapshot of the scraped submission page will also be stored.
+ 
 #### Sample Output
 
 	{
@@ -139,10 +149,6 @@ beyond the first 20 pages of results.
 Effort was made to ensure that the submission page was fully loaded by
 continuously clicking the `Load More Replies` link as long as it was available.
 There can still be hidden replies that lie behind links like `1 Reply` or `3 Replies`.
-
-- A snapshot of each submission webpage is taken as it is being scraped.
-These image files are written to the same subverse folder as the submission data.
-Need to make this optional.
 
 - ASCII Art found in source code is generated with 'Calvin S' font at
   [patorjk.com](http://patorjk.com/software/taag/#p=display&c=c%2B%2B&f=Calvin%20S&t=)
