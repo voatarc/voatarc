@@ -1,7 +1,7 @@
 
 # voatarc
 
-Project to gather posts and comments from a Voat subverse for archival purposes.
+Project to gather submissions and comments from a Voat subverse for archival purposes.
 
 ### Installation
 
@@ -13,9 +13,14 @@ and [CasperJS](http://casperjs.org/).
 
 ### Usage
 
-	casperjs voatarc.js subverse_name
+	casperjs voatarc.js --subverse=subverse_name
 
 Running this command will create a new folder for the subverse and populate it
-with the posts and comments found in the specified subverse. If the subverse
+with the submissions and comments found in the specified subverse. If the subverse
 folder already exists, it will be updated.
+
+### Other
+
+- ASCII Art found in source code is generated with 'Calvin S' font at
+  [patorjk.com](http://patorjk.com/software/taag/#p=display&c=c%2B%2B&f=Calvin%20S&t=)
 
