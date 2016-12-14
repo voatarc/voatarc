@@ -1,5 +1,6 @@
 var system = require('system');
 
+
 var JQuery_js_Filename = 'jquery-2.1.0.js';
 var Client_js_Filename = 'dom-code.js';
 
@@ -26,72 +27,7 @@ var fs = require('fs');
 var logger = require('logger');
 var parsing = require('parsing');
 
-
-//=====================================================================
-//=====================================================================
-//
-//  ╔═╗┌─┐┌─┐┌─┐┌─┐┬─┐  ╔═╗┬  ┬┌─┐┌┐┌┌┬┐┌─┐
-//  ║  ├─┤└─┐├─┘├┤ ├┬┘  ║╣ └┐┌┘├┤ │││ │ └─┐
-//  ╚═╝┴ ┴└─┘┴  └─┘┴└─  ╚═╝ └┘ └─┘┘└┘ ┴ └─┘
-//
-//=====================================================================
-//=====================================================================
-
-
-//=====================================================================
-casper.on('remote.message', function(msg)
-{
-	logger.LogMessage('[Remote Page] ' + msg);
-});
-
-
-//=====================================================================
-casper.on("error", function(msg, trace)
-{
-	logger.LogMessage("[Error] " + msg);
-	logger.LogMessage("[Error trace] " + JSON.stringify(trace, undefined, 4));
-});
-
-
-//=====================================================================
-casper.on("page.error", function(msg, trace)
-{
-	logger.LogMessage("[Remote Page Error] " + msg);
-	logger.LogMessage("[Remote Error trace] " + JSON.stringify(trace, undefined, 4));
-});
-
-
-//=====================================================================
-//=====================================================================
-//
-//  ┌─┐┌─┐┌─┐┌─┐┌─┐┬─┐  ┬ ┬┬─┐┌─┐┌─┐┌─┐┌─┐┬─┐┌─┐
-//  │  ├─┤└─┐├─┘├┤ ├┬┘  │││├┬┘├─┤├─┘├─┘├┤ ├┬┘└─┐
-//  └─┘┴ ┴└─┘┴  └─┘┴└─  └┴┘┴└─┴ ┴┴  ┴  └─┘┴└─└─┘
-//
-//=====================================================================
-//=====================================================================
-
-
-//=====================================================================
-casper.GetAttributeValue = function(Selector, AttributeName, Default)
-{
-	if(!this.exists(Selector))
-	{
-		return Default;
-	}
-	return this.getElementAttribute(Selector, AttributeName);
-}
-
-
-//=====================================================================
-casper.GetElementText = function(Selector)
-{
-	if(!this.exists(Selector))
-	{
-		return '';
-	}
-	return this.fetchText(Selector);
-}
+require('utils-casper')(casper, logger);
 
 
 //=====================================================================

@@ -141,7 +141,8 @@ continuously clicking the `Load More Replies` link as long as it was available.
 There can still be hidden replies that lie behind links like `1 Reply` or `3 Replies`.
 
 - A snapshot of each submission webpage is taken as it is being scraped.
-These image files are also written to the same subverse folder as the submission data.
+These image files are written to the same subverse folder as the submission data.
+Need to make this optional.
 
 - ASCII Art found in source code is generated with 'Calvin S' font at
   [patorjk.com](http://patorjk.com/software/taag/#p=display&c=c%2B%2B&f=Calvin%20S&t=)
