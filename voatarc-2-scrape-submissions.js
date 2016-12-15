@@ -88,6 +88,10 @@ if(!fs.exists(output_folder))
 
 
 //=====================================================================
+var log_debug_objects = false;
+
+
+//=====================================================================
 //=====================================================================
 //
 //  ╔╦╗┌─┐┬┌┐┌  ╔═╗─┐ ┬┌─┐┌─┐┬ ┬┌┬┐┬┌─┐┌┐┌
@@ -131,6 +135,8 @@ function ClickToDeath(selector)
 	return;
 }
 
+var submission_count = submission_index_entries.length;
+var submission_number = 0;
 
 //=====================================================================
 // Iterate through the submission index and scrape each submission page.
@@ -139,9 +145,13 @@ casper.eachThen(
 	function ScrapeSubmissionPage(iteration)
 	{
 		var submission_index_entry = iteration.data;
+		submission_number++;
 		logger.LogMessage('==========================================');
-		logger.LogMessage('Processing next submission.');
-		logger.LogMessage(JSON.stringify(submission_index_entry, undefined, '    '));
+		logger.LogMessage('Processing submission ' + submission_number + ' of ' + submission_count + '.');
+		if(log_debug_objects)
+		{
+			logger.LogMessage(JSON.stringify(submission_index_entry, undefined, '    '));
+		}
 
 		this.thenOpen(
 			submission_index_entry.submission_url,
@@ -180,7 +190,10 @@ casper.eachThen(
 					submission.comment_count = casper.GetElementText('div.submission a.comments');
 					submission.comment_count = parsing.Parse_GetTextBefore(submission.comment_count, ' comment');
 
-					logger.LogMessage(JSON.stringify(submission, undefined, '    '));
+					if(log_debug_objects)
+					{
+						logger.LogMessage(JSON.stringify(submission, undefined, '    '));
+					}
 
 					// Get the comments.
 					submission.comments = [];
