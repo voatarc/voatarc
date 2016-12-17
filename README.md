@@ -148,6 +148,8 @@ of posting by a user (forum sliding) or a high frequency of vo(a)tes within a sh
 
 ## Other Notes
 
+- Need to develop a more polite system which limits acquisition to a single submission per minute.
+
 - The submission index file (created by the first script) is limited to
 containing submissions from only the first 20 pages of the subverse as
 viewed on voat.co with default settings.
