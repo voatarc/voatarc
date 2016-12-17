@@ -10,7 +10,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE submission
 (
-	  id					INT					NOT NULL AUTO_INCREMENT
+	  auto_id				INT					NOT NULL AUTO_INCREMENT
 	, submission_id			INT					NOT NULL
 	, title					VARCHAR( 200 )		NULL
 	, timestamp				VARCHAR( 50 )		NULL
@@ -32,7 +32,7 @@ ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE comment
 (
-	  id					INT					NOT NULL AUTO_INCREMENT
+	  auto_id				INT					NOT NULL AUTO_INCREMENT
 	, submission_id			INT					NOT NULL
 	, comment_id			INT					NOT NULL
 	, parent_comment_id		INT					NULL
