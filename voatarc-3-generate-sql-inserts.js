@@ -153,5 +153,4 @@ submission_index_entries.forEach(function(submission_index_entry, submission_ind
 
 logger.LogMessage("Script is finished.");
 
-
-casper.exit(0);
+casper.run();
