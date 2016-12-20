@@ -242,10 +242,10 @@ casper.eachThen(
 					logger.LogMessage('Writing submission file [' + filename + '].');
 					fs.write(filename, content, 'w');
 
+					casper.resources = [];
+
 					return;
 				});
-
-				this.resources = [];
 
 			});
 
