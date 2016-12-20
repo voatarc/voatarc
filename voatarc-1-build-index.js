@@ -187,7 +187,7 @@ casper.eachThen(
 casper.then(
 	function BeforeExit()
 	{
-		logger.LogMessage("Scraping is finished.");
+		logger.LogMessage("Script is finished.");
 
 		var content = JSON.stringify(submission_index_entries, undefined, 4);
 		var filename = output_folder + '/submission-index.json';
@@ -199,4 +199,7 @@ casper.then(
 );
 
 
-casper.run();
+casper.run(function(self)
+{
+	this.exit();
+});

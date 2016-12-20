@@ -39,6 +39,8 @@ utils.dump(casper.cli.args);
 logger.LogMessage("Casper CLI passed options:");
 utils.dump(casper.cli.options);
 
+casper.start();
+
 
 //=====================================================================
 // Parse the command line.
@@ -151,7 +153,13 @@ submission_index_entries.forEach(function(submission_index_entry, submission_ind
 });
 
 
-logger.LogMessage("Script is finished.");
+casper.then(function BeforeExit()
+{
+	logger.LogMessage("Script is finished.");
+});
 
-casper.start();
-casper.run();
+
+casper.run(function(self)
+{
+	this.exit();
+});

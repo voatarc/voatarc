@@ -241,9 +241,13 @@ casper.eachThen(
 					var filename = output_folder + '/' + submission.submission_id + '.json';
 					logger.LogMessage('Writing submission file [' + filename + '].');
 					fs.write(filename, content, 'w');
+					
+					casper.page.close();
 
 					return;
 				});
+
+				this.resources = [];
 
 			});
 
@@ -263,12 +267,13 @@ casper.eachThen(
 //=====================================================================
 
 
-casper.then(
-	function BeforeExit()
-	{
-		logger.LogMessage("Scraping is finished.");
-	}
-);
+casper.then(function BeforeExit()
+{
+	logger.LogMessage("Scraping is finished.");
+});
 
 
-casper.run();
+casper.run(function(self)
+{
+	this.exit();
+});
