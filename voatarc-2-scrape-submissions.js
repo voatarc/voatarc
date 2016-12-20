@@ -243,11 +243,10 @@ casper.eachThen(
 					fs.write(filename, content, 'w');
 					
 					casper.page.close();
+					casper.resources = [];
 
 					return;
 				});
-
-				this.resources = [];
 
 			});
 

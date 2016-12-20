@@ -166,6 +166,9 @@ casper.eachThen(
 					}
 				}
 
+				casper.page.close();
+				casper.resources = [];
+
 				return;
 			}
 		);
