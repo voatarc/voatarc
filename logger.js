@@ -49,11 +49,17 @@ Logger.GetResourcesUsed =
 						return;
 					}
 
-					var text = '' + stdout;
-					var values = text.split('  ');
+					var text = stdout.trim();
+					var values = text.split(' ');
+					var cpu = values[0].trim();
+					text = text.slice(cpu.length).trim();
+					values = text.split(' ');
+					var memory = values[0].trim();
+
 					// values[0] = parseFloat(values[0]);
 					// values[1] = parseFloat(values[1]);
-					callback(null, system.pid, values[0], values[1]);
+					// callback(null, system.pid, values[0], values[1]);
+					callback(null, system.pid, cpu, memory);
 				});
 		}
 		else if(os === 'windows')
@@ -127,7 +133,7 @@ Logger.LogMessage =
 				// cpu = cpu.toFixed(1);
 				stats += 'c:' + cpu + '%';
 				stats += ' | '
-				// memory = memory.toFixed(1);
+					// memory = memory.toFixed(1);
 				stats += 'm:' + memory + '%';
 				console.log(head + ' ' + stats + ' ' + tail);
 			});
