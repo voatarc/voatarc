@@ -66,6 +66,12 @@ else
 }
 
 
+if(casper.cli.has('log_resources'))
+{
+	logger.LogResources = true;
+}
+
+
 var take_snapshots = casper.cli.has('snapshots');
 
 

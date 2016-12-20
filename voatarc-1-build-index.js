@@ -87,6 +87,12 @@ if(casper.cli.has('max_pages'))
 }
 
 
+if(casper.cli.has('log_resources'))
+{
+	logger.LogResources = true;
+}
+
+
 //=====================================================================
 // Start with front page of the subverse.
 var start_url = 'https://voat.co/v/' + subverse_name;
@@ -167,10 +173,12 @@ casper.eachThen(
 				}
 
 				casper.resources = [];
-
 				return;
 			}
 		);
+		
+		casper.resources = [];
+		return;
 	}
 );
 

@@ -57,6 +57,12 @@ else
 }
 
 
+if(casper.cli.has('log_resources'))
+{
+	logger.LogResources = true;
+}
+
+
 var log_debug_objects = false;
 
 

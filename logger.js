@@ -13,7 +13,7 @@ function Logger()
 
 //---------------------------------------------------------------------
 Logger.LogTimestamp = true;
-Logger.LogResources = true;
+Logger.LogResources = false;
 
 
 //---------------------------------------------------------------------
