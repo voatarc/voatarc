@@ -241,12 +241,11 @@ casper.eachThen(
 					var filename = output_folder + '/' + submission.submission_id + '.json';
 					logger.LogMessage('Writing submission file [' + filename + '].');
 					fs.write(filename, content, 'w');
-					
-					casper.page.close();
-					casper.resources = [];
 
 					return;
 				});
+
+				this.resources = [];
 
 			});
 
