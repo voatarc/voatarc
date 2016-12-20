@@ -243,12 +243,12 @@ casper.eachThen(
 					fs.write(filename, content, 'w');
 
 					casper.resources = [];
-
 					return;
 				});
 
 			});
 
+		casper.resources = [];
 		return;
 	}
 );
