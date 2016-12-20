@@ -51,8 +51,8 @@ Logger.GetResourcesUsed =
 
 					var text = '' + stdout;
 					var values = text.split('  ');
-					values[0] = parseFloat(values[0]);
-					values[1] = parseFloat(values[1]);
+					// values[0] = parseFloat(values[0]);
+					// values[1] = parseFloat(values[1]);
 					callback(null, system.pid, values[0], values[1]);
 				});
 		}
@@ -124,11 +124,11 @@ Logger.LogMessage =
 				{
 					stats += ' | '
 				}
-				cpu = cpu.toFixed(1);
-				stats += 'c:' + cpu;
+				// cpu = cpu.toFixed(1);
+				stats += 'c:' + cpu + '%';
 				stats += ' | '
-				memory = memory.toFixed(1);
-				stats += 'm:' + memory;
+				// memory = memory.toFixed(1);
+				stats += 'm:' + memory + '%';
 				console.log(head + ' ' + stats + ' ' + tail);
 			});
 		}
