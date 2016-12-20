@@ -10,7 +10,7 @@ var casper_options = {
 	logLevel: 'debug',
 	pageSettings:
 	{
-		loadImages: false,
+		loadImages: true,
 		loadPlugins: false
 	},
 	clientScripts: [
