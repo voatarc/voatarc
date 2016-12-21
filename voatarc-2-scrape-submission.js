@@ -43,8 +43,9 @@ require('utils-casper')(casper, logger);
 
 //=====================================================================
 // Log the startup.
-logger.LogMessage('Casper Status: ');
-casper.status(true);
+
+// logger.LogMessage('Casper Status: ');
+// casper.status(true);
 logger.LogMessage("Casper CLI passed args:");
 utils.dump(casper.cli.args);
 logger.LogMessage("Casper CLI passed options:");

@@ -3,8 +3,6 @@
 
 function SqlText( $Text )
 {
-	// $Text = preg_replace('/\\/g', '\\\\', $Text);
-	// $Text = preg_replace('/"/g', '\\"', $Text);
 	$Text = str_replace('\\', '\\\\', $Text);
 	$Text = str_replace('"', '\\"', $Text);
 	return $Text;
