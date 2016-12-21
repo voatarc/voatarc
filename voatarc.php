@@ -118,6 +118,9 @@ for( $index = 0; $index < $submission_count; $index++ )
 
 	try
 	{
+		// echo "\t\tSleeping ...\n";
+		// sleep( 1 );
+		
 		echo "\t\tReading the remote page.\n";
 		$data_filename = $SUBVERSE_FOLDER.'/'.$submission_id.'.json';
 		// Prepare the command.

@@ -21,7 +21,7 @@ CREATE TABLE submission
 	, submission_text		VARCHAR( 4000 )		NULL
 	
 	/* Keys and Indexes */
-	, PRIMARY KEY (id)
+	, PRIMARY KEY (auto_id)
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -44,7 +44,7 @@ CREATE TABLE comment
 	, comment_text			VARCHAR( 4000 )		NULL
 	
 	/* Keys and Indexes */
-	, PRIMARY KEY (id)
+	, PRIMARY KEY (auto_id)
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

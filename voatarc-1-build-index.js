@@ -126,7 +126,9 @@ if(!fs.exists(output_folder))
 var submission_index_page_urls = [];
 for(var page_number = 0; page_number < max_pages; page_number++)
 {
-	submission_index_page_urls.push('https://voat.co/v/' + subverse_name + '?page=' + page_number);
+	submission_index_page_urls.push('https://voat.co/v/top' + subverse_name + '?page=' + page_number);
+	submission_index_page_urls.push('https://voat.co/v/hot' + subverse_name + '?page=' + page_number);
+	submission_index_page_urls.push('https://voat.co/v/new' + subverse_name + '?page=' + page_number);
 }
 
 
