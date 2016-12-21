@@ -178,7 +178,7 @@ casper.eachThen(
 				return;
 			}
 		);
-		
+
 		casper.resources = [];
 		return;
 	}
@@ -204,7 +204,9 @@ casper.then(
 		var content = JSON.stringify(submission_index_entries, undefined, 4);
 		var filename = output_folder + '/submission-index.json';
 		logger.LogMessage('Writing submission index file [' + filename + '].');
-		logger.LogMessage(submission_index_entries.length + ' submissions were indexed in ' + max_pages + ' pages.');
+		logger.LogMessage(submission_index_entries.length +
+			' submissions were indexed in ' +
+			submission_index_page_urls.length + ' pages.');
 		fs.write(filename, content, 'w');
 
 	}
