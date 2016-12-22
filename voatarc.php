@@ -27,6 +27,7 @@ $SUBVERSE_FOLDER = '';
 $SQL_FILENAME = '';
 $LOG_FILE = '';
 $MAX_PAGES = '';
+$SLEEP_SECONDS = 30;
 
 // Subverse name
 if( count( $argv ) >= 2 )
@@ -38,7 +39,7 @@ if( count( $argv ) >= 2 )
 }
 else
 {
-	exit("Error: Missing parameter\nUsage: php voatarc.php subverse_name [max_pages]");
+	exit("Error: Missing parameter\nUsage: php voatarc.php subverse_name [max_pages] [sleep_seconds]");
 }
 
 // Max pages
@@ -47,12 +48,19 @@ if( count( $argv ) >= 3 )
 	$MAX_PAGES = $argv[ 2 ];
 }
 
+// Sleep Seconds
+if( count( $argv ) >= 4 )
+{
+	$SLEEP_SECONDS = $argv[ 3 ];
+}
+
 
 //=====================================================================
 echo "=== Initialize Environment\n";
 //=====================================================================
 
 
+echo "Clearing output folder [".$SUBVERSE_FOLDER."]\n";
 try
 {
 	exec( "rm ".$SUBVERSE_FOLDER."/*" );
@@ -63,11 +71,15 @@ catch( Exception $exception )
 }
 
 
+START_PROCESSING:
+
+
 //=====================================================================
 echo "=== Execute : voatarc-1-build-index\n";
 //=====================================================================
 
 
+echo "Building index of submissions to process.\n";
 try
 {
 	// Prepare the command.
@@ -107,6 +119,8 @@ echo "=== Execute : voatarc-2-scrape-submission\n";
 //=====================================================================
 
 
+echo "Begin scraping submissions.\n";
+echo "Using sleep for [".$SLEEP_SECONDS."] seconds.\n";
 for( $index = 0; $index < $submission_count; $index++ )
 {
 	$submission_entry = $submission_index[ $index ];
@@ -116,9 +130,6 @@ for( $index = 0; $index < $submission_count; $index++ )
 
 	try
 	{
-		// echo "\t\tSleeping ...\n";
-		// sleep( 1 );
-		
 		echo "\t\tReading the remote page.\n";
 		$data_filename = $SUBVERSE_FOLDER.'/'.$submission_id.'.json';
 		// Prepare the command.
@@ -187,4 +198,13 @@ for( $index = 0; $index < $submission_count; $index++ )
 		exit( "Exception while processing submission [".$submission_id."]:\n".$exception->getMessage() );
 	}
 
+	echo "\t\tSleeping for [".$SLEEP_SECONDS."] seconds ...\n";
+	sleep( $SLEEP_SECONDS );
+	
+}
+
+
+if( file_exists('voatarc-forever') )
+{
+	goto START_PROCESSING;
 }
